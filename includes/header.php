@@ -1,4 +1,4 @@
-<?php include('fazLogin.php') ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="../src/style/style.css">
+  <link rel="shortcut icon" href="../src/imgs/icon.ico" type="image/x-icon">
 
   <title>produtos</title>
 </head>
@@ -28,7 +29,7 @@
           </ul>
         </div>
         <div class="col-lg-4">
-          <?php isset($_SESSION['email'])  ?  include('loginAtivo.php') : include('loginFormulario.php')  ?>
+          <?php isset($_SESSION['email'])  ?  include('loginAtivo.php') : include('loginFormulario.php'); ?>
         </div>
       </nav>
     </header>
