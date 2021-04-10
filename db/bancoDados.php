@@ -1,6 +1,6 @@
 <?php
 include_once __DIR__ . "/../config.php";
-session_start();
+
 
 function abrirConnection()
 {
@@ -13,6 +13,25 @@ function abrirConnection()
   }
 }
 
+// CADASTRO USUÁRIO
+
+function postUsuario($nome, $email, $cidade, $estado, $senhaSegura, $imagem)
+{
+  $sql = "insert into usuarios (nome, email, cidade, estado, senha, imagem) values (:nome, :email, :cidade, :estado, :senha, :imagem)";
+  $result = abrirConnection()->prepare($sql);
+  $result->bindValue(':nome', $nome);
+  $result->bindValue(':email', $email);
+  $result->bindValue(':cidade', $cidade);
+  $result->bindValue(':estado', $estado);
+  $result->bindValue(':senha', $senhaSegura);
+  $result->bindValue(':imagem', $imagem);
+  $result->execute();
+  //fecharConexao();
+
+  $alertaMensagem = "Cadastro realizado com sucesso";
+}
+
+// 
 // LOGAR
 function login($email, $senha)
 {
@@ -29,23 +48,16 @@ function login($email, $senha)
   }
 }
 
-// CADASTRO USUÁRIO
-
-function postUsuario($nome, $email, $cidade, $estado, $senhaSegura)
+// GET COMENTÁRIOS
+/*function getComentarios()
 {
-  $sql = "insert into usuarios (nome, email, cidade, estado, senha, imagem) values (:nome, :email, :cidade, :estado, :senha, 'mariaj.jpg')";
-  $result = abrirConexao()->prepare($sql);
-  $result->bindValue(':nome', $nome);
-  $result->bindValue(':email', $email);
-  $result->bindValue(':cidade', $cidade);
-  $result->bindValue(':estado', $estado);
-  $result->bindValue(':senha', $senhaSegura);
+  $sql = "select * from comentarios";
+  $result = abrirConnection()->prepare($sql);
   $result->execute();
-  fecharConexao();
+  $usuarios = $result->fetchAll(PDO::FETCH_ASSOC);
+  foreach($comentarios as )
 }
-
-
-
+*/
 /*
 function delete($id)
 {
