@@ -6,7 +6,7 @@ USE cadastroComentario;
 
 ----- USUARIOS -----
 
-CREATE TABLE usuarios(id INT PRIMARY KEY AUTO_INCREMENT, nome VARCHAR(50) NOT NULL, email VARCHAR(50), cidade VARCHAR(50), estado VARCHAR(2), senha VARCHAR(100) NOT NULL, imagem VARCHAR(100));
+CREATE TABLE usuarios(id INT PRIMARY KEY AUTO_INCREMENT, nome VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL, cidade VARCHAR(50), estado VARCHAR(2) NOT NULL, senha VARCHAR(100) NOT NULL, imagem VARCHAR(100));
 
 INSERT INTO cadastroComentario.usuarios (nome, email, cidade, estado, senha, imagem) VALUES('Maria Joaquina', 'mariajoaquina@gmail.com', 'São Roque', 'SP', '$2y$10$T8UwsKHTq.ZSU2ogrPJq0u18odjNQTrj374yz5VfD.6Ttt93z72mm', 'mariaj.jpg');
 
@@ -35,6 +35,7 @@ DROP TABLE usuarios;
 
 ----- LOGINS E SENHAS -----
 
+$senhaSegura = password_hash($senha, PASSWORD_DEFAULT);
 $senha = password_hash('11111111', PASSWORD_DEFAULT);
 
 mariajoaquina@gmail.com
