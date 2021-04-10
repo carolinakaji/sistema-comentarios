@@ -1,4 +1,4 @@
-<?php include('login.php') ?>
+<?php include('fazLogin.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@
         <div class="col-lg-8">
           <ul class="nav">
             <li class="nav-item">
-              <a class="navbar-brand" href="#">
+              <a class="navbar-brand" href="../index.php">
                 <img src="../src/imgs/logo.png" class="d-inline-block align-top" alt="Logo da loja Botanic shop">
               </a>
 
