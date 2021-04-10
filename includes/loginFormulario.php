@@ -1,3 +1,4 @@
+<?php include_once('../pages/fazLogin.php') ?>
 <small>Digite seu login e senha:</small>
 <form class="form-inline " method="POST" action=''>
   <label class="sr-only" for="inlineFormInputName2">Nome</label>
