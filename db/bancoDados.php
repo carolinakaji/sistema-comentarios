@@ -29,7 +29,24 @@ function login($email, $senha)
   }
 }
 
+// CADASTRO USUÁRIO
 
+function postUsuario($nome, $email, $cidade, $estado, $senhaSegura)
+{
+  $sql = "insert into usuarios (nome, email, cidade, estado, senha, imagem) values (:nome, :email, :cidade, :estado, :senha, 'mariaj.jpg')";
+  $result = abrirConexao()->prepare($sql);
+  $result->bindValue(':nome', $nome);
+  $result->bindValue(':email', $email);
+  $result->bindValue(':cidade', $cidade);
+  $result->bindValue(':estado', $estado);
+  $result->bindValue(':senha', $senhaSegura);
+  $result->execute();
+  fecharConexao();
+}
+
+
+
+/*
 function delete($id)
 {
   $sql = "delete from comentarios where id = :id";
@@ -38,7 +55,7 @@ function delete($id)
   $result->execute();
   fecharConexao();
 }
-/*
+
 function update($nome, $email)
 {
   $sql = "update clientes set (cidade= :cidade, estado = :estado, ) where email= :email";
