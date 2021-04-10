@@ -1,45 +1,50 @@
 <div class="container">
-  <h3 class="mt-5">Preencha o formulário de cadastro</h3>
-  <form>
+  <h2 class="my-5 text-center">Preencha o formulário de cadastro</h2>
+  <form class="form-cadastro">
     <div class="row">
-      <div class="col-4">
-        <div>
-          <input type="file" name="imagem" accept="image/*">
-        </div>
+      <div class="col-5">
+        <img src="../src/imgs/cadastro-img.jpg" alt="" width="400">
       </div>
-      <div class="col-8">
-        <div class="row">
+      <div class="col-7">
+        <div class="row ">
           <div class="mb-3 col-8">
-            <label for="exampleInputEmail1" class="form-label">Nome:</label>
+            <label for="exampleInputEmail1" class="form-label">Nome</label>
             <input type="text" class="form-control" name="nome">
           </div>
         </div>
         <div class="row">
-          <div class="mb-3 col-8">
-            <label for="exampleInputEmail1" class="form-label">E-mail:</label>
+          <div class="mb-3 col-md-8">
+            <label for="exampleInputEmail1" class="form-label">E-mail</label>
             <input type="email" class="form-control" id="exampleInputEmail1">
           </div>
         </div>
         <div class="row">
-          <div class="mb-3 col-5">
-            <label for="exampleInputEmail1" class="form-label">Cidade:</label>
+          <div class="mb-3 col-6">
+            <label for="exampleInputEmail1" class="form-label">Cidade</label>
             <input type="cidade" class="form-control">
           </div>
-          <div class="mb-3 col-3">
-            <label for="exampleInputEmail1" class="form-label">UF:</label>
+          <div class="mb-3 col-2">
+            <label for="exampleInputEmail1" class="form-label">UF</label>
             <input type="estado" class="form-control">
           </div>
         </div>
         <div class="row">
-          <div class="mb-3 col-5">
-            <label for="exampleInputPassword1" class="form-label">Senha:</label>
+          <div class="mb-3 col-6">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
             <input type="password" class="form-control">
           </div>
         </div>
+        <div class="row">
+          <div class="my-3 col-4">
+            <input type="file" name="imagem" accept="image/*">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8 text-right m-3">
+            <button type="submit" class="btn btn-green-invert" name="limparCadastro">Limpar</button>
+            <button type="submit" class="btn btn-green" name="cadastrar">Cadastrar</button>
+          </div>
+        </div>
       </div>
-    </div>
-
-
-    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>
