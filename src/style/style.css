@@ -1,0 +1,29 @@
+* {
+  color: #333;
+}
+
+header {
+  border-bottom: 1px solid rgba(133, 133, 133, 0.185);
+}
+
+.btn-green {
+  background-color: #00af91;
+  color: white;
+}
+
+.footer-bg {
+  background-color: #00af91;
+  color: #f7f3e9;
+}
+
+.footer-bg a {
+  color: #f7f3e9;
+}
+
+nav a {
+  color: #333;
+}
+
+nav a:hover {
+  color: #00af91;
+}
