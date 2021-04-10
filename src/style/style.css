@@ -6,10 +6,23 @@ header {
   border-bottom: 1px solid rgba(133, 133, 133, 0.185);
 }
 
+.form-cadastro button {
+  width: 150px;
+
+}
+
 .btn-green {
   background-color: #00af91;
   color: white;
 }
+
+.btn-green-invert {
+  background-color: white;
+  color: #00af91;
+  border: 1px solid #00af91;
+
+}
+
 
 .footer-bg {
   background-color: #00af91;
