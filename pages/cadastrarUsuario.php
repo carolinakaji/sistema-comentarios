@@ -2,6 +2,7 @@
 
 include_once __DIR__ . '/../config.php';
 include_once PATH_ROOT . "/db/bancoDados.php";
+
 $senha = isset($_POST['senha']) ? $_POST['senha'] : '';
 $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
 $email = isset($_POST['email']) ? $_POST['email'] : '';

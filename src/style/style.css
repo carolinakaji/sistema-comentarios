@@ -40,3 +40,19 @@ nav a {
 nav a:hover {
   color: #00af91;
 }
+
+small.msgLoginErro,
+span.msgAlertaComentario {
+  color: rgb(255, 32, 77);
+  font-size: .9rem;
+  height: 7px;
+}
+
+span.msgAlertaComentario {
+  color: rgb(255, 32, 77)
+}
+
+.cadastre {
+  font-weight: 600;
+  font-size: 1.2rem;
+}

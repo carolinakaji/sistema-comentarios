@@ -48,8 +48,8 @@ function login($email, $senha)
       
       $_SESSION['email'] = $usuario['email'];
       $_SESSION['id'] = $usuario['id'];
-      echo 'Quem logado: ' . $_SESSION['id'];
-      // header("location: ../index.php");
+     // echo 'Quem logado: ' . $_SESSION['id'];
+      header("location: ../index.php");
 
     }
   }
@@ -78,9 +78,7 @@ function postComentario($comentario, $idUsuarioLogado)
 function getComentarios()
 {
   $comments = '';
-  $sql = "select * from usuarios 
-          right join comentarios 
-          on usuarios.id = comentarios.usuario";
+  $sql = "select * from usuarios right join comentarios on usuarios.id = comentarios.usuario";
   $result = abrirConnection()->prepare($sql);
   $result->execute();
   $usuarios = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -96,11 +94,15 @@ function getComentarios()
         <div class='col-2'>
           <img src='../src/imgs/{$usuario['imagem']}' width='80' height='80'>
         </div>
-        <div class='col-10'>
+        <div class='col-8'>
           <div class='d-inline-flex'>
             <h5>{$usuario['nome']} - {$dataEHora}</h5>
           </div>
           <p>{$usuario['comentario']}</p>
+        </div>
+        <div class='col-2'>
+        <span><i class='bi bi-pencil-fill px-2 text-warning'></i></span>
+        <button type='submit' class='deletarComentario' name='deletarComentario'><i class='bi bi-trash-fill text-danger'></i></button>
         </div>
       </div>
       <hr>";
@@ -160,13 +162,12 @@ function verificaQuemEstaLogado($email){
 
 
 
-/*
-function delete($id)
+
+function deleteComentario($id)
 {
   $sql = "delete from comentarios where id = :id";
   $result = abrirConexao()->prepare($sql);
-  $result->bindValue(':nome', $id);
+  $result->bindValue(':id', $id);
   $result->execute();
   fecharConexao();
 }
-*/
