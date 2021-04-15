@@ -77,38 +77,36 @@ function postComentario($comentario, $idUsuarioLogado)
 }
 
 // GET COMENTÁRIOS
-function getComentarios()
+function getComentariosProduto($id)
 {
   $comments = '';
-  $sql = "select * from usuarios right join comentarios on usuarios.id = comentarios.usuario";
+  $sql = "select * from 
+          usuarios 
+          inner join comentarios on usuarios.id = comentarios.usuario";
   $result = abrirConnection()->prepare($sql);
   $result->execute();
   $usuarios = $result->fetchAll(PDO::FETCH_ASSOC);
 
   foreach($usuarios as $usuario){
-      if($usuario['usuario'] == null){
-        $usuario['nome'] = 'Anônimo';
-        $usuario['imagem'] = 'anonim.jpg';
-      }
+      if($usuario['produto'] == $id){
+        
       $dataEHora = dataBrasil($usuario['date']);
       $comments .="
       <div class='row'>
         <div class='col-2'>
           <img src='../src/imgs/{$usuario['imagem']}' width='80' height='80'>
         </div>
-        <div class='col-8'>
+        <div>
           <div class='d-inline-flex'>
             <h5>{$usuario['nome']} - {$dataEHora}</h5>
           </div>
           <p>{$usuario['comentario']}</p>
         </div>
-        <div class='col-2'>
-        <span><i class='bi bi-pencil-fill px-2 text-warning'></i></span>
-        <button type='submit' class='deletarComentario' name='deletarComentario'><i class='bi bi-trash-fill text-danger'></i></button>
-        </div>
+        
       </div>
       <hr>";
     }
+  }
   return $comments;
 }
 
@@ -153,7 +151,8 @@ function dataBrasil($data){
   return date('d/m/Y H:i', strtotime($data));
 }
 
-function verificaQuemEstaLogado($email){
+function verificaQuemEstaLogado($email)
+{
   $sql = "select id, nome from usuarios where email=:email";
   $result = abrirConnection()->prepare($sql);
   $result->bindValue(':email', $email);
@@ -170,4 +169,49 @@ function deleteComentario($id)
   $result->bindValue(':id', $id);
   $result->execute();
   fecharConexao();
+}
+
+// PRODUTOS
+
+function getProdutos()
+{
+  $card = '';
+  $sql = "select * from produtos";
+  $result = abrirConnection()->prepare($sql);
+  $result->execute();
+  $produtos = $result->fetchAll(PDO::FETCH_ASSOC);
+
+  foreach($produtos as $produto){
+    $card .= "
+    <div class='col-lg-4 col-md-6 col-sm-12 my-3'>
+    <div class='card' style='width: 18rem;'>
+      <img src='../src/imgs/{$produto['imagem']}' class='card-img-top'>
+      <div class='card-body'>
+        <h5 class='card-title'>{$produto['titulo']}</h5>
+        <p class='card-text'>{$produto['descricao']}</p>
+        <a href='../pages/comentariosProduto.php?id={$produto['id']}' class='btn btn-primary'>Comentários</a>
+      </div>
+    </div>
+  </div>";
+      
+    }
+  return $card;
+}
+
+function getProdutoId($id){
+  $produtoSelecionado ='';
+  $sql = "select * from produtos where id=:id";
+  $result = abrirConnection()->prepare($sql);
+  $result->bindValue(':id', $id);
+  $result->execute();
+  $produto = $result->fetchAll(PDO::FETCH_ASSOC);
+  $produtoSelecionado ="
+  <div class='row'>
+  <div class='col-3'><img src='../src/imgs/{$produto[0]['imagem']}'></div>
+  <div class='col-9'>
+    <h2>{$produto[0]['titulo']}</h2>
+    <p>{$produto[0]['descricao']}</p>
+    </div>
+    </div>";
+  return $produtoSelecionado;
 }
