@@ -1,4 +1,4 @@
-<footer class="py-3 footer-bg text-white">
+<footer class="py-3 footer-bg text-white mt-5">
   <div class="container text-center">
     <small>Copyright &copy; | <a href="https://github.com/carolinakaji" target="_blank"> Carol Kaji</a> | Fatec 4ºSemestre 2021</small>
   </div>

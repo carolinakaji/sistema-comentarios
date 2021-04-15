@@ -19,7 +19,7 @@ function fecharConexao()
 }
 
 // CADASTRO USUÁRIO
-function postUsuario($nome, $email, $cidade, $estado, $senhaSegura, $foto)
+function postUsuario($nome, $email, $cidade, $estado, $senhaSegura, $nomeTipoImagem)
 {
   $sql = "insert into usuarios (nome, email, cidade, estado, senha, imagem) values (:nome, :email, :cidade, :estado, :senha, :imagem)";
   $result = abrirConnection()->prepare($sql);
@@ -28,11 +28,12 @@ function postUsuario($nome, $email, $cidade, $estado, $senhaSegura, $foto)
   $result->bindValue(':cidade', $cidade);
   $result->bindValue(':estado', $estado);
   $result->bindValue(':senha', $senhaSegura);
-  $result->bindValue(':imagem', $foto);
+  $result->bindValue(':imagem', $nomeTipoImagem);
   $result->execute();
   fecharConexao();
 
-  $alertaMensagem = "Cadastro realizado com sucesso";
+  $cadastrado = true;
+  return $cadastrado;
 }
 
 
@@ -153,16 +154,14 @@ function dataBrasil($data){
 }
 
 function verificaQuemEstaLogado($email){
-  $sql = "select id from usuarios where email=:email";
+  $sql = "select id, nome from usuarios where email=:email";
   $result = abrirConnection()->prepare($sql);
   $result->bindValue(':email', $email);
   $result->execute();
-  $usuarios = $result->fetchAll(PDO::FETCH_ASSOC);
+  $usuario = $result->fetchAll(PDO::FETCH_ASSOC);
+  return $usuario[0]['nome'];
   };
   
-
-
-
 
 function deleteComentario($id)
 {

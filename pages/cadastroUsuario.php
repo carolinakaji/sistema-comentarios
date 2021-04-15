@@ -1,3 +1,9 @@
+<?php 
+include __DIR__ . '/../config.php';
+include PATH_ROOT . "/components/header.php";
+include_once ('../acoes/cadastrarUsuario.php');
+?>
+
 <div class="container">
   <h2 class="my-5 text-center">Preencha o formulário de cadastro</h2>
   <form class="form-cadastro" method="POST" enctype="multipart/form-data">
@@ -46,5 +52,9 @@
           </div>
         </div>
       </div>
+    </div>
   </form>
 </div>
+
+
+<?php include PATH_ROOT . "/components/footer.php";?>

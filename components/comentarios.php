@@ -1,4 +1,5 @@
-<?php include_once('../pages/cadastraComentario.php') ?>
+
+<?php include_once('../acoes/cadastraComentario.php') ?>
 <div class='container'>
 
 <h2 class='my-5 text-center display-4'>Conheça nossos produtos</h2>
@@ -37,7 +38,6 @@
 </div>
 </div>
 </div>
-<?php echo date('d/m/Y H:m')?>
 
 <div class="row p-3">
   <div class="col-7">
