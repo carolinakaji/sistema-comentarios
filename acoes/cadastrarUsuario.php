@@ -10,11 +10,23 @@ $cidade = isset($_POST['cidade']) ? $_POST['cidade'] : '';
 $estado = isset($_POST['estado']) ? $_POST['estado'] : '';
 $senhaSegura = password_hash($senha, PASSWORD_DEFAULT);
 
-if (isset($_POST['cadastrar'])) {
 
-  postUsuario($nome, $email, $cidade,  $estado, $senhaSegura, 'mariaj.jpg');
-  $alertaSucesso = 'Cadastro realizado com sucesso';
-  header("Location: ../index.php");
+if (isset($_POST['cadastrar'])) {
+  $foto = $_FILES['foto'];
+
+  if($foto['name']!== ''){
+    $nomeImagem = md5($foto['name'] . rand(0,9999));
+    $tipo = substr($foto['name'], -4);
+    $nomeTipoImagem = "{$nomeImagem}{$tipo}";
+    
+    $imagem = $foto['tmp_name'];
+    move_uploaded_file($imagem, "../src/imgs/{$nomeTipoImagem}");
+    var_dump($_FILES['foto']);
+  }
+
+  var_dump($_FILES);
+  postUsuario($nome, $email, $cidade,  $estado, $senhaSegura, $nomeTipoImagem);
+ // header("Location: ../index.php");
 }
 
 if (isset($_POST['limparCadastro'])) {
@@ -26,6 +38,3 @@ if (isset($_POST['limparCadastro'])) {
 }
 
 
-include PATH_ROOT . "/includes/header.php";
-include PATH_ROOT . "/includes/formCadastroUsuario.php";
-include PATH_ROOT . "/includes/footer.php";

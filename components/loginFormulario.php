@@ -1,4 +1,4 @@
-<?php include('../pages/fazLogin.php') ?>
+<?php include('../acoes/fazLogin.php') ?>
 
 
 <div class="row d-flex">
@@ -24,5 +24,5 @@
 </form>
 
     <div>
-      <p class="cadastre"><a href="../pages/cadastrarUsuario.php">Cadastrar-se</a></p>
+      <p class="cadastre"><a href="../pages/cadastroUsuario.php">Cadastrar-se</a></p>
     </div>
