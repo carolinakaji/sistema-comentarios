@@ -1,4 +1,4 @@
-<?php include_once('../acoes/cadastraComentario.php') ?>
+<?php include_once('../acoes/publicaComentario.php') ?>
 <div class="container">
 <?php echo getProdutoId($_GET['id'])?>;
 <div>

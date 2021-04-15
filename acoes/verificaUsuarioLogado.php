@@ -5,3 +5,4 @@ include_once PATH_ROOT . "/db/bancoDados.php";
 
 
 verificaQuemEstaLogado($_SESSION['email']);
+
