@@ -60,19 +60,21 @@ function login($email, $senha)
 /****************** COMENTÁRIOS ******************/
 
 // POST COMENTARIO
-function postComentario($comentario, $idUsuarioLogado)
+function postComentario($comentario, $idUsuarioLogado, $idProduto)
 {
   
   $currentDateTime = date('Y-m-d H:i:s');
-  $sql = "insert into comentarios (comentario, date, usuario) values (:comentario, :date, :usuario)";
+  $sql = "insert into comentarios (comentario, date, usuario, produto) values (:comentario, :date, :usuario, :produto)";
   $result = abrirConnection()->prepare($sql);
   $result->bindValue(':comentario', $comentario);
   $result->bindValue(':date', $currentDateTime);
   $result->bindValue(':usuario', $idUsuarioLogado);
+  $result->bindValue(':produto', $idProduto);
 
   $result->execute();
   fecharConexao();
 
+  header("Location: ../pages/comentariosProduto.php?id={$idProduto}");
   $alertaMensagem = "Cadastro realizado com sucesso";
 }
 
@@ -82,14 +84,17 @@ function getComentariosProduto($id)
   $comments = '';
   $sql = "select * from 
           usuarios 
-          inner join comentarios on usuarios.id = comentarios.usuario";
+          right join comentarios on usuarios.id = comentarios.usuario";
   $result = abrirConnection()->prepare($sql);
   $result->execute();
   $usuarios = $result->fetchAll(PDO::FETCH_ASSOC);
 
   foreach($usuarios as $usuario){
       if($usuario['produto'] == $id){
-        
+        if($usuario['usuario'] == null){
+          $usuario['nome'] = 'Anônimo';
+          $usuario['imagem'] = 'anonim.jpg';
+        }
       $dataEHora = dataBrasil($usuario['date']);
       $comments .="
       <div class='row'>
