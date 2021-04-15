@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('America/Sao_Paulo');
 include_once __DIR__ . "/../config.php";
 
 function abrirConnection()
@@ -18,7 +19,7 @@ function fecharConexao()
 }
 
 // CADASTRO USUÁRIO
-function postUsuario($nome, $email, $cidade, $estado, $senhaSegura, $imagem)
+function postUsuario($nome, $email, $cidade, $estado, $senhaSegura, $foto)
 {
   $sql = "insert into usuarios (nome, email, cidade, estado, senha, imagem) values (:nome, :email, :cidade, :estado, :senha, :imagem)";
   $result = abrirConnection()->prepare($sql);
@@ -27,7 +28,7 @@ function postUsuario($nome, $email, $cidade, $estado, $senhaSegura, $imagem)
   $result->bindValue(':cidade', $cidade);
   $result->bindValue(':estado', $estado);
   $result->bindValue(':senha', $senhaSegura);
-  $result->bindValue(':imagem', $imagem);
+  $result->bindValue(':imagem', $foto);
   $result->execute();
   fecharConexao();
 
@@ -61,7 +62,7 @@ function login($email, $senha)
 function postComentario($comentario, $idUsuarioLogado)
 {
   
-  $currentDateTime = dataBrasil(date('Y/d/m H:i'));
+  $currentDateTime = date('Y-m-d H:i:s');
   $sql = "insert into comentarios (comentario, date, usuario) values (:comentario, :date, :usuario)";
   $result = abrirConnection()->prepare($sql);
   $result->bindValue(':comentario', $comentario);
@@ -148,7 +149,7 @@ function update($id,$comentario)
 }
 
 function dataBrasil($data){
-  return date('d/m/Y H:m', strtotime($data));
+  return date('d/m/Y H:i', strtotime($data));
 }
 
 function verificaQuemEstaLogado($email){

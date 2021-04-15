@@ -8,6 +8,7 @@ if (isset($_POST['publicar'])) {
     $msgAlertaComentario = "O campo deve conter texto.";
   } else if(!isset($_SESSION['id'])){
     postComentario($_POST['comentario'], null);
+    
   } else {
     postComentario($_POST['comentario'], $_SESSION['id']);
   }

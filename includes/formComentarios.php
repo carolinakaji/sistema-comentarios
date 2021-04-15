@@ -37,7 +37,7 @@
 </div>
 </div>
 </div>
-
+<?php echo date('d/m/Y H:m')?>
 
 <div class="row p-3">
   <div class="col-7">

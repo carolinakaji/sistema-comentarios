@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="my-5 text-center">Preencha o formulário de cadastro</h2>
-  <form class="form-cadastro" method="POST">
+  <form class="form-cadastro" method="POST" enctype="multipart/form-data">
     <div class="row">
       <div class="col-5">
         <img src="../src/imgs/cadastro-img.jpg" alt="" width="400">
@@ -36,7 +36,7 @@
         </div>
         <div class="row">
           <div class="my-3 col-4">
-            <input type="file" name="imagem" accept="image/*">
+            <input type="file" name="foto" accept="image/*">
           </div>
         </div>
         <div class="row">
