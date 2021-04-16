@@ -101,12 +101,14 @@ function getComentariosProduto($id)
         <div class='col-2'>
           <img src='../src/imgs/{$usuario['imagem']}' width='80' height='80'>
         </div>
-        <div>
-          <div class='d-inline-flex'>
+        
+          <div class='col-10'>
             <h5>{$usuario['nome']} - {$dataEHora}</h5>
-          </div>
           <p>{$usuario['comentario']}</p>
+          <div class='d-inline'>
+          
         </div>
+      </div>
         
       </div>
       <hr>";
@@ -115,36 +117,11 @@ function getComentariosProduto($id)
   return $comments;
 }
 
-// GET COMENTÁRIOS POR ID
-// function getComentariosEmail($id)
-// {
-//   $editarBtn = verificaQuemEstaLogado();
-//   $comments = '';
-//   $sql = "select * from usuarios 
-//           inner join comentarios 
-//           on usuarios.id = comentarios.usuario where usuario.id=:id";
-//   $result = abrirConnection()->prepare($sql);
-//   $result->bindValue(':id', $id);
-//   $result->execute();
-//   $usuarios = $result->fetchAll(PDO::FETCH_ASSOC);
-//   foreach($usuarios as $usuario){
-//     $dataEHora = dataBrasil($usuario['date']);
-//     $comments .="
-//                   <div>
-//                     <div class='d-inline-flex'>
-//                       <h5>{$usuario['nome']} - {$dataEHora}</h5> {$editarBtn}<button class='btn ml-4'> asdfasdf</button>
-//                     </div>
-//                     <p>{$usuario['comentario']}</p>
-//                   </div>";
-//   }
-//   return $comments;
-// }
-
 // UPDATE COMENTÁRIOS
 function update($id,$comentario)
 {
   $sql = "update comentarios set (comentario=:comentario) where id=:id";
-  $var = abrirConexao();
+  $var = abrirConnection();
   $result = $var->prepare($sql);
   $result->bindValue(':comentario', $comentario);
   $result->bindValue(':id', $id);
@@ -152,25 +129,10 @@ function update($id,$comentario)
   fecharConexao();
 }
 
-function dataBrasil($data){
-  return date('d/m/Y H:i', strtotime($data));
-}
-
-function verificaQuemEstaLogado($email)
-{
-  $sql = "select id, nome from usuarios where email=:email";
-  $result = abrirConnection()->prepare($sql);
-  $result->bindValue(':email', $email);
-  $result->execute();
-  $usuario = $result->fetchAll(PDO::FETCH_ASSOC);
-  return $usuario[0]['nome'];
-  };
-  
-
 function deleteComentario($id)
 {
   $sql = "delete from comentarios where id = :id";
-  $result = abrirConexao()->prepare($sql);
+  $result = abrirConnection()->prepare($sql);
   $result->bindValue(':id', $id);
   $result->execute();
   fecharConexao();
@@ -212,11 +174,33 @@ function getProdutoId($id){
   $produto = $result->fetchAll(PDO::FETCH_ASSOC);
   $produtoSelecionado ="
   <div class='row'>
-  <div class='col-3'><img src='../src/imgs/{$produto[0]['imagem']}'></div>
-  <div class='col-9'>
-    <h2>{$produto[0]['titulo']}</h2>
-    <p>{$produto[0]['descricao']}</p>
+    <div class='py-5'>
+      <div class='text-center'><img src='../src/imgs/{$produto[0]['imagem']}'></div>
+      <h2 class='text-center'>{$produto[0]['titulo']}</h2>
+      <p>{$produto[0]['descricao']}</p>
     </div>
-    </div>";
+  </div>";
   return $produtoSelecionado;
 }
+
+
+function dataBrasil($data){
+  return date('d/m/Y H:i', strtotime($data));
+}
+
+function verificaQuemEstaLogado($email)
+{
+  $sql = "select id, nome from usuarios where email=:email";
+  $result = abrirConnection()->prepare($sql);
+  $result->bindValue(':email', $email);
+  $result->execute();
+  $usuario = $result->fetchAll(PDO::FETCH_ASSOC);
+  return $usuario[0]['nome'];
+  };
+
+  // function exibirBotaoEditarExcluir(){
+  //   "<form method='post'>
+  //         <button type='submit' class='btn btn-warning' name='editarComentario'><i class='bi bi-pencil-fill px-4'></i></button>
+  //       <button type='submit' class='btn btn-danger ' name='deletarComentario'><i class='bi bi-trash-fill px-4'></i></button>
+  //       </form>"
+  // }

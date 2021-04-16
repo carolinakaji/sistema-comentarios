@@ -26,7 +26,7 @@ if (isset($_POST['cadastrar'])) {
 
   var_dump($_FILES);
   postUsuario($nome, $email, $cidade,  $estado, $senhaSegura, $nomeTipoImagem);
- // header("Location: ../index.php");
+  header("Location: ../index.php");
 }
 
 if (isset($_POST['limparCadastro'])) {

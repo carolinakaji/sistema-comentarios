@@ -1,6 +1,6 @@
 <?php include_once('../acoes/publicaComentario.php') ?>
 <div class="container">
-<?php echo getProdutoId($_GET['id'])?>;
+<?php echo getProdutoId($_GET['id'])?>
 <div>
 
 <div class='container'>
@@ -16,13 +16,10 @@
     </div>
   </div>
   <div class="row p-3">
-    <div class="col-6">
+    <div >
     <?php echo getComentariosProduto($_GET['id']) ?>
     </div>
-    <div class='col-2'>
-        <span><i class='bi bi-pencil-fill px-2 text-warning'></i></span>
-        <button type='submit' class='deletarComentario' name='deletarComentario'><i class='bi bi-trash-fill text-danger'></i></button>
-        </div>
+    
   </div>
 </div>
 </div>

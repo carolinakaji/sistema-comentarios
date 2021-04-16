@@ -10,7 +10,7 @@ CREATE TABLE usuarios(id INT PRIMARY KEY AUTO_INCREMENT, nome VARCHAR(50) NOT NU
 
 INSERT INTO cadastroComentario.usuarios (nome, email, cidade, estado, senha, imagem) VALUES('Maria Joaquina', 'mariajoaquina@gmail.com', 'São Roque', 'SP', '$2y$10$T8UwsKHTq.ZSU2ogrPJq0u18odjNQTrj374yz5VfD.6Ttt93z72mm', 'mariaj.jpg');
 
-INSERT INTO cadastroComentario.usuarios (nome, email, cidade, estado, senha, imagem) VALUES('Helena Fernández', 'prof_helena@gmail.com', 'São Roque', 'SP', '$2y$10$HP0tcrefHI2GSxO1cQjaCujfTFGMxLsFctuGfBx1GkcmeqCPa5vKa', 'helenaf.jpg');
+INSERT INTO cadastroComentario.usuarios (nome, email, cidade, estado, senha, imagem) VALUES('Helena Fernandez', 'prof_helena@gmail.com', 'São Roque', 'SP', '$2y$10$HP0tcrefHI2GSxO1cQjaCujfTFGMxLsFctuGfBx1GkcmeqCPa5vKa', 'helenaf.jpg');
 
 INSERT INTO cadastroComentario.usuarios (nome, email, cidade, estado, senha, imagem) VALUES('Cirilo Rivera', 'cirilo@gmail.com', 'São Roque', 'SP', '$2y$10$g8NpU/iVmzFTDALre5TjReCUuQFK37LNdrYkOI74u8R1SDpmtF5jK', 'cirilor.jpg');
 
@@ -19,11 +19,11 @@ INSERT INTO cadastroComentario.usuarios (nome, email, cidade, estado, senha, ima
 
 CREATE TABLE produtos(id INT PRIMARY KEY AUTO_INCREMENT, imagem VARCHAR(100) NOT NULL, titulo VARCHAR(50) NOT NULL, descricao VARCHAR(200) NOT NULL) ENGINE=InnoDB;
 
-INSERT INTO cadastroComentario.produtos(imagem, titulo, descricao) VALUES('01-286.jpg', 'Óleos essenciais','Extração dos óleos com alto grau de pureza, garantindo a melhor qualidade para sua fragrância. Conheça toda a linha.');
+INSERT INTO cadastroComentario.produtos(imagem, titulo, descricao) VALUES('01-286.jpg', 'Extratos puros','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget tortor sed eros ultricies placerat. Proin consectetur elementum felis, sit amet porta velit pharetra a.');
 
-INSERT INTO cadastroComentario.produtos(imagem, titulo, descricao) VALUES('02-286.jpg', 'Sabonete artesanais', 'Ação de limpeza profunda. Nosso sabonete além de limpar, hidrata sua pele.');
+INSERT INTO cadastroComentario.produtos(imagem, titulo, descricao) VALUES('02-286.jpg', 'Sabonetes artesanais', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget tortor sed eros ultricies placerat. Proin consectetur elementum felis, sit amet porta velit pharetra a.');
 
-INSERT INTO cadastroComentario.produtos(imagem, titulo, descricao) VALUES('03-286.jpg', 'Creme hidratante', 'A hidratação que você procurava com absorção rápida, fragrância agradável que dura o dia todo.');
+INSERT INTO cadastroComentario.produtos(imagem, titulo, descricao) VALUES('03-286.jpg', 'Creme hidratante', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget tortor sed eros ultricies placerat. Proin consectetur elementum felis, sit amet porta velit pharetra a.');
 
 
 

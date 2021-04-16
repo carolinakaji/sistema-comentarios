@@ -3,6 +3,7 @@
 
   <div class="row mx-auto my-5">
     <?php echo getProdutos() ?>
+    </div>
 </div>
 
 
